@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class GetRotated : MonoBehaviour
 {
-    public Transform target;
+    public GameObject Target;
 
     void Update()
     {
 
-        // Rotate the camera every frame so it keeps looking at the target
-        transform.LookAt(target);
+        Vector3 Look = transform.InverseTransformPoint(Target.transform.position);
+        float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg + 0;
 
-        // Same as above, but setting the worldUp parameter to Vector3.left in this example turns the camera on its side
-        transform.LookAt(target, Vector3.left);
-    }
-
-    protected void LateUpdate()
-    {
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+        transform.Rotate(0, 0, Angle);
     }
 }

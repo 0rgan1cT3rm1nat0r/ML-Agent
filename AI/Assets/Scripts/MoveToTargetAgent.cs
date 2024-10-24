@@ -50,7 +50,7 @@ public class MoveToTargetAgent : Agent
         if (collision.TryGetComponent(out Target target))
         {
             AddReward(10f);
-            backgroundSpriteRenderer.color = Color.green;
+            backgroundSpriteRenderer.color = Color.blue;
             EndEpisode();
         }
         else if (collision.TryGetComponent(out Wall wall))
